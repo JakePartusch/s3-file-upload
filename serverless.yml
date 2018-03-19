@@ -2,13 +2,13 @@ service: resume-upload
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
   # Provide permissions for this service to manipulate S3.
   iamRoleStatements:
     - Effect: "Allow"
       Action:
         - "s3:*"
-      Resource: "arn:aws:s3:::resume-bucket/*"
+      Resource: "arn:aws:s3:::jakes-test-file-upload-bucket/*"
 
 # Expose function to public API for POST requests.
 functions:
@@ -26,7 +26,7 @@ resources:
     UploadBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: resume-bucket
+        BucketName: jakes-test-file-upload-bucket
         AccessControl: PublicRead
         CorsConfiguration:
           CorsRules:
